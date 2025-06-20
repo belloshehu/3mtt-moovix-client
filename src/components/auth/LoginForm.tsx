@@ -13,7 +13,8 @@ import { cn } from "@/lib/utils";
 import FormPasswordField from "../form-fields/FormPasswordField";
 import FormInputField from "../form-fields/FormInput";
 import { LoadingDialog } from "../LoadingDialog";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import Loader from "../Loader";
+// import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export default function LoginForm() {
 	const { mutate, isPending } = useLogin();
@@ -38,7 +39,8 @@ export default function LoginForm() {
 	return (
 		<Form {...form}>
 			<LoadingDialog loadingText="Logging in ..." open={isPending}>
-				<DotLottieReact src="animations/auth-lock.lottie" loop autoplay />
+				{/* <DotLottieReact src="animations/auth-lock.lottie" loop autoplay /> */}
+				<Loader />
 			</LoadingDialog>
 			<form
 				onSubmit={handleSubmit(onSubmit)}

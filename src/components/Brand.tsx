@@ -1,16 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Brand() {
 	return (
 		<Link className="flex items-center gap-5" href={"/"}>
-			<Image
-				alt="logo"
-				src={"/logo.png"}
-				width={150}
-				height={60}
-				className="object-cover"
-			/>
+			<h3 className="text-xl first-letter:bg-[#ADF802] first-letter:text-white first-letter:p-1 first-letter:rounded-md text-[#ADF802]">
+				Moovix
+			</h3>
 		</Link>
 	);
 }

@@ -9,7 +9,6 @@ import { usePathname } from "next/navigation";
 import { navItems } from "@/constants/navigation";
 import useSession from "@/lib/session/use-session";
 import ProfileDropdownMenu from "./ProfileDropdownMenu";
-import { NavButton } from "./NavButton";
 
 export default function Header() {
 	const isMobile = useIsMobile();
@@ -20,13 +19,13 @@ export default function Header() {
 	return (
 		<header
 			className={cn(
-				"flex items-center justify-between p-0 px-5 gap-10 shadow-none md:px-10 fixed left-0 z-50 bg-white w-screen",
+				"flex items-center justify-between p-0 px-5 gap-10 shadow-none md:px-10 fixed left-0 z-50 bg-black text-[#ADF802] w-screen",
 				{ "shadow-none": isMobile }
 			)}
 		>
 			<Brand />
 
-			<nav className="items-center gap-5 hidden md:flex flex-1">
+			<nav className="items-center gap-5 hidden md:flex flex-1 p-2">
 				{navItems.map(({ name, path }) => {
 					return (
 						<Link
@@ -47,19 +46,12 @@ export default function Header() {
 				})}
 			</nav>
 
-			<NavButton
-				pathname="/trial"
-				currentPathname={pathname}
-				className="bg-blue-500 text-white"
-			>
-				<Link href="/trial">Try Studio now</Link>
-			</NavButton>
 			{!isMobile &&
 				(session?.isLoggedIn ? (
 					<ProfileDropdownMenu />
 				) : (
 					<Link href="/login">
-						<Button variant={"default"} size={"lg"} className="bg-blue-500">
+						<Button variant={"default"} size={"lg"} className="bg-[#ADF802]">
 							Login
 						</Button>
 					</Link>

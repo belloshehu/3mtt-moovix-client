@@ -22,15 +22,10 @@ import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import NavigationDrawerDashboardItems from "./NavigationDrawerDashboardItems";
-import { useWorkspaceMenu } from "@/hooks/use-workspace-menu";
-import { useGetWorkspace } from "@/hooks/service-hooks/worspace.hook";
-import { WorkspaceType } from "@/types/workspace.types";
 
 export default function NavigationDrawer() {
 	const pathname = usePathname();
 	const { session } = useSession();
-	const { id } = useParams();
-	const { data, isLoading } = useGetWorkspace(id as string);
 	const {
 		user: { firstName, lastName, email, role },
 	} = session;
@@ -38,15 +33,7 @@ export default function NavigationDrawer() {
 	const { protectedRequest } = useAxios();
 	const [toggle, setToggle] = useState(false);
 	const [toggleDrawer, setToggleDrawer] = useState(false);
-	const { renderMenuItems, renderWorkspaceLink } = useWorkspaceMenu({
-		pathname,
-		workspace: data as WorkspaceType,
-		isloadingWorkspace: isLoading,
-		isMenu: false,
-		id: id as string,
-		buttonStyle: "bg-white",
-		onClick: () => setToggleDrawer(false),
-	});
+
 	if (pathname === "/login" || pathname === "/signup") return null;
 
 	return (
@@ -130,15 +117,6 @@ export default function NavigationDrawer() {
 						<NavigationDrawerDashboardItems toggleDrawer={setToggleDrawer} />
 					)}
 				</motion.nav>
-				{/* workspace menu items */}
-
-				{pathname.includes("/studio") && <Separator className="mt-3" />}
-				{pathname.includes("/studio") && (
-					<section className="w-[80%] mt-2 flex flex-col gap-1 p-2">
-						{renderMenuItems && renderMenuItems()}
-						{renderWorkspaceLink && renderWorkspaceLink()}
-					</section>
-				)}
 
 				<DrawerFooter className="w-full">
 					{session?.isLoggedIn ? (

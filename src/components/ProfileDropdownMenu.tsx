@@ -1,10 +1,10 @@
-import { DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuTrigger,
 	DropdownMenuItem,
 	DropdownMenuSeparator,
+	DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 import { UserCircle } from "lucide-react";
 import useSession from "@/lib/session/use-session";
