@@ -102,3 +102,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 <img width="1440" alt="Screenshot 2025-06-21 at 23 30 33" src="https://github.com/user-attachments/assets/5d030d1b-c726-4ffe-be62-e3f0cbbf4204" />
 
+<img width="1440" alt="Screenshot 2025-06-21 at 23 43 50" src="https://github.com/user-attachments/assets/b15682fd-3692-4488-b0e1-6ff45b0b21fe" />
+
+
