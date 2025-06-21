@@ -15,7 +15,7 @@ export default function Header() {
 	const pathname = usePathname();
 	const { session } = useSession();
 
-	if (pathname === "/login" || pathname === "/signup") return null;
+	if (pathname === "/auth/login" || pathname === "/auth/signup") return null;
 	return (
 		<header
 			className={cn(
@@ -50,7 +50,7 @@ export default function Header() {
 				(session?.isLoggedIn ? (
 					<ProfileDropdownMenu />
 				) : (
-					<Link href="/login">
+					<Link href="/auth/login">
 						<Button variant={"default"} size={"lg"} className="bg-[#ADF802]">
 							Login
 						</Button>

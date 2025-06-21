@@ -10,10 +10,9 @@ import Searchbar from "../Searchbar";
 export default function Hero() {
 	return (
 		<section className="flex flex-col items-center rounded-none justify-center h-fit  md:py-10 gap-10 w-full text-center bg-[url(/movie.jpg)] bg-center bg-cover bg-blend-overlay bg-slate-900/50">
-			<Searchbar />
 			<div className="px-5 md:px-20 rounded-md flex flex-col items-center justify-center w-full h-fit gap-10">
 				<div className=" flex flex-col gap-5 items-center text-center  justify-center w-full">
-					<motion.h1
+					{/* <motion.h1
 						initial={{
 							transform: "translateY(-100%)",
 							scale: 0.7,
@@ -27,7 +26,7 @@ export default function Hero() {
 						)}
 					>
 						Movie management with ease
-					</motion.h1>
+					</motion.h1> */}
 					<motion.p
 						initial={{ transform: "translateY(-100%)" }}
 						whileInView={{ transform: "translate(0)" }}
@@ -38,17 +37,8 @@ export default function Hero() {
 						Manage your movies, watchlists, and more with our intuitive
 						platform.
 					</motion.p>
-
-					<Link href="/studio">
-						<Button
-							variant={"secondary"}
-							className="bg-[#ADF802] text-white"
-							size={"lg"}
-						>
-							Get Started
-						</Button>
-					</Link>
 				</div>
+				<Searchbar />
 			</div>
 		</section>
 	);

@@ -8,6 +8,7 @@ const BACKEND_BASE_URL =
 	process.env.NODE_ENV === "development"
 		? process.env.NEXT_PUBLIC_BACKEND_BASE_URL
 		: process.env.NEXT_PUBLIC_PROD_BACKEND_BASE_URL;
+
 export const useAxios = () => {
 	const { session, logout } = useSession();
 	const router = useRouter();
@@ -41,5 +42,32 @@ export const useAxios = () => {
 		}
 	);
 
-	return { protectedRequest, publicRequest };
+	// tmdb request
+	const TMDB_BASE_URL = "https://api.themoviedb.org/3";
+	const publicTMDBRequest = axios.create({
+		baseURL: TMDB_BASE_URL,
+	});
+
+	publicTMDBRequest.interceptors.request.use(
+		(request) => {
+			// request.headers[
+			// 	"Authorization"
+			// ] = `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`;
+			request.headers["Content-Type"] = "Application/json";
+			return request;
+		},
+		(error) => {
+			return Promise.reject(error);
+		}
+	);
+
+	const protectedTMDBRequest = axios.create({
+		baseURL: TMDB_BASE_URL,
+	});
+	return {
+		protectedRequest,
+		publicRequest,
+		publicTMDBRequest,
+		protectedTMDBRequest,
+	};
 };

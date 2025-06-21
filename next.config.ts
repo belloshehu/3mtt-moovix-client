@@ -13,10 +13,10 @@ const nextConfig: NextConfig = {
 				search: "",
 			},
 			{
-				protocol: "https",
-				hostname: "res.cloudinary.com",
+				protocol: "http",
+				hostname: "image.tmdb.org",
 				port: "",
-				pathname: "/dzzxgsrbl/**",
+				pathname: "/t/p/w500/**",
 				search: "",
 			},
 			{
