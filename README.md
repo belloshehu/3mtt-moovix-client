@@ -100,8 +100,11 @@ Feel free to submit issues or pull requests to improve the project.
 
 This project is licensed under the [MIT License](LICENSE).
 
-<img width="1440" alt="Screenshot 2025-06-21 at 23 30 33" src="https://github.com/user-attachments/assets/5d030d1b-c726-4ffe-be62-e3f0cbbf4204" />
+## Home Page
+<img width="1440" alt="Screenshot 2025-06-21 at 23 30 33" src="https://github.com/user-attachments/assets/d698f709-7a9c-4fca-81a8-f237f570d193" />
 
-<img width="1440" alt="Screenshot 2025-06-21 at 23 43 50" src="https://github.com/user-attachments/assets/b15682fd-3692-4488-b0e1-6ff45b0b21fe" />
+## Search Page
+<img width="1440" alt="Screenshot 2025-06-21 at 23 30 33" src="https://github.com/user-attachments/assets/4cf70281-4425-457e-8ec0-a78638238005" />
+
 
 
