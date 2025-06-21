@@ -1,19 +1,32 @@
 import MovieserviceAPI from "@/services/movie.service";
 import { useQuery } from "@tanstack/react-query";
-import { useAxios } from "../use-axios";
-import { GroupType } from "@/components/movie/MoviesGroup";
 
-export const useGetMovies = ({
-	group,
-	page,
-}: {
-	group: GroupType;
-	page: number;
-}) => {
-	const { publicTMDBRequest } = useAxios();
+export const useGetMovies = ({ page }: { page: number }) => {
 	return useQuery({
-		queryFn: () => MovieserviceAPI.getMovies({ group, page }),
-		queryKey: ["Movies", group, page],
+		queryFn: () => MovieserviceAPI.getMovies({ page }),
+		queryKey: ["Movies", page],
 		staleTime: 1000 * 60 * 60, // 5 minutes
+	});
+};
+
+export const useGetPopularMovies = ({ page }: { page: number }) => {
+	return useQuery({
+		queryFn: () => MovieserviceAPI.getPopularMovies({ page }),
+		queryKey: ["Movies", "popular", page],
+		staleTime: 1000 * 60 * 60, // 5 minutes
+	});
+};
+
+export const useSearchMovies = ({
+	page,
+	query,
+}: {
+	page: number;
+	query: string;
+}) => {
+	return useQuery({
+		queryFn: () =>
+			MovieserviceAPI.searchMovies({ page, query, sort_by: "popularity" }),
+		queryKey: ["Movies", query, page],
 	});
 };

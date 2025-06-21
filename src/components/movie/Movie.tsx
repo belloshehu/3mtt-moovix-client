@@ -24,11 +24,15 @@ export default function Movie({
 			)}
 		>
 			<Image
-				src={"http://image.tmdb.org/t/p/w500" + poster_path}
+				src={
+					poster_path
+						? "http://image.tmdb.org/t/p/w500" + poster_path
+						: "/movie-placeholder.jpg"
+				}
 				alt={title}
 				width={200}
 				height={200}
-				className="w-full rounded-lg shadow-md object-cover"
+				className="w-full rounded-lg h-full shadow-md object-cover"
 			/>
 			<MovieDialog title={title} />
 			{/* Movie details will be displayed here */}

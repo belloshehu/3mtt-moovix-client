@@ -15,7 +15,7 @@ export interface MovieType {
 	vote_count: number; // Defaults to 0
 }
 
-export interface MovieList {
+export interface MovieListType {
 	page: number; // Defaults to 1
 	results: MovieType[]; // Array of Movie objects
 	total_pages: number; // Defaults to 0
@@ -23,7 +23,7 @@ export interface MovieList {
 }
 
 export interface MovieListResponse {
-	data: MovieList; // The main data object containing the list of movies
+	data: MovieListType; // The main data object containing the list of movies
 	message: string; // A message indicating the status of the response
 	error?: string; // An optional error message if something went wrong
 }
