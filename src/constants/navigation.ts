@@ -3,16 +3,9 @@ import { NavigationItemType } from "@/types/navigation.types";
 export const navItems: NavigationItemType[] = [
 	{ path: "#features", name: "Features" },
 	{ path: "#pricing", name: "Pricing" },
-	{ path: "#contact-us", name: "Contact" },
-	{ path: "/studio", name: "Studio" },
 ];
 
 export const adminNavItems: NavigationItemType[] = [
-	{
-		name: "Studio",
-		path: "/studio",
-		active: true,
-	},
 	{
 		name: "Users",
 		path: "/users",
@@ -36,8 +29,8 @@ export const adminNavItems: NavigationItemType[] = [
 
 export const userNavItems: NavigationItemType[] = [
 	{
-		name: "Saved decorations",
-		path: "#",
+		name: "Dashboard",
+		path: "/dashboard",
 		active: true,
 	},
 

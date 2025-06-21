@@ -13,9 +13,7 @@ export default function Movie({
 	className,
 	title,
 	poster_path,
-	backdrop_path,
 	release_date,
-	overview,
 	vote_count,
 }: MovieProps) {
 	return (
