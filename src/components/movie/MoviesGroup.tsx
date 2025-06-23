@@ -1,5 +1,4 @@
 "use client";
-import { alfa_Slab_One } from "@/app/fonts";
 import MovieList from "./MovieList";
 import { MovieListType } from "@/types/movie.types";
 import { Button } from "../ui/button";
@@ -19,6 +18,7 @@ interface MovieGroupProps {
 	data: MovieListType | undefined;
 	isLoading: boolean;
 	className?: string;
+	filter?: React.ReactNode;
 }
 export default function MovieGroup({
 	groupDescription,
@@ -26,6 +26,7 @@ export default function MovieGroup({
 	data,
 	isLoading,
 	className,
+	filter,
 }: MovieGroupProps) {
 	return (
 		<section
@@ -36,7 +37,7 @@ export default function MovieGroup({
 		>
 			<div className="flex items-center justify-between w-full mb-2">
 				<h2
-					className={`${alfa_Slab_One.className} md:text-2xl font-semibold capitalize border-b-4 border-[#ADF802] mb-2 text-black`}
+					className={`font-normal md:text-lg md:font-semibold capitalize border-b-4 border-[#ADF802] mb-2 text-black`}
 				>
 					{groupTitle} ({data?.results.length || 0})
 				</h2>
@@ -46,11 +47,11 @@ export default function MovieGroup({
 						... {data?.total_pages || 0}
 					</h3>
 					<Button className="text-[#ADF802]">
-						<LoaderCircle /> Load more
+						<LoaderCircle /> More
 					</Button>
 				</div>
 			</div>
-			<p className="text-gray-500">{groupDescription}</p>
+			{filter && filter}
 			{/* Placeholder for movie cards */}
 			{isLoading ? (
 				<p className="text-gray-500">Loading movies...</p>

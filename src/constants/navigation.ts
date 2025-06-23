@@ -11,20 +11,6 @@ export const adminNavItems: NavigationItemType[] = [
 		path: "/users",
 		active: true,
 	},
-	{
-		name: "Settings",
-		path: "/studio/settings",
-		active: false,
-	},
-	{
-		name: "Messages",
-		path: "/studio/messages",
-		active: false,
-	},
-	{
-		name: "Notifications",
-		path: "/studio/notifications",
-	},
 ];
 
 export const userNavItems: NavigationItemType[] = [

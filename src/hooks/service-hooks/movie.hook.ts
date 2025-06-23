@@ -20,13 +20,44 @@ export const useGetPopularMovies = ({ page }: { page: number }) => {
 export const useSearchMovies = ({
 	page,
 	query,
+	sort_by = "popularity",
 }: {
 	page: number;
 	query: string;
+	sort_by?: "popularity" | "rating" | "release_date";
+}) => {
+	return useQuery({
+		queryFn: () => MovieserviceAPI.searchMovies({ page, query, sort_by }),
+		queryKey: ["Movies", query, page],
+	});
+};
+
+export const useGetDiscoverMovies = ({
+	page = 1,
+	with_genres = "",
+	include_adult = false,
+	include_video = false,
+}: {
+	page: number;
+	with_genres?: string;
+	include_adult?: boolean;
+	include_video?: boolean;
 }) => {
 	return useQuery({
 		queryFn: () =>
-			MovieserviceAPI.searchMovies({ page, query, sort_by: "popularity" }),
-		queryKey: ["Movies", query, page],
+			MovieserviceAPI.getDiscoverMovies({
+				page,
+				include_adult,
+				with_genres,
+				include_video,
+			}),
+		queryKey: ["Movies", page, include_adult, with_genres, include_video],
+	});
+};
+
+export const useGetMoviesGenres = () => {
+	return useQuery({
+		queryFn: () => MovieserviceAPI.getMoviesGenres(),
+		queryKey: ["genres"],
 	});
 };

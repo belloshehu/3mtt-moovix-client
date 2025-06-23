@@ -31,16 +31,9 @@ export default function ProfileDropdownMenu() {
 				.map((item, index) => {
 					return (
 						<DropdownMenuItem key={index}>
-							{/* <NavButton
-              className="w-full text-left flex justify-start items-center"
-              key={index}
-              pathname={item.path}
-              currentPathname={currentPathname}
-            > */}
 							<Link className="text-left" href={item.path}>
 								{item.name}
 							</Link>
-							{/* </NavButton> */}
 						</DropdownMenuItem>
 					);
 				});
@@ -51,7 +44,7 @@ export default function ProfileDropdownMenu() {
 			<DropdownMenuTrigger>
 				<UserCircle
 					size={34}
-					className=" hover:scale-105 duration-300 transition-all text-blue-400"
+					className=" hover:scale-105 duration-300 transition-all text-[#ADF802]"
 				/>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end">
@@ -74,7 +67,6 @@ export default function ProfileDropdownMenu() {
 				>
 					Log out
 				</DropdownMenuItem>
-				{role !== "user" && <DropdownMenuItem>Become partner</DropdownMenuItem>}
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);

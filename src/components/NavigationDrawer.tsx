@@ -9,11 +9,11 @@ import {
 	DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Button } from "./ui/button";
-import { ChevronRight, Flower, Home, MenuIcon, UserCircle } from "lucide-react";
+import { ChevronRight, Home, MenuIcon, UserCircle } from "lucide-react";
 import Brand from "@/components/Brand";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { NavButton } from "@/components/NavButton";
 import useSession from "@/lib/session/use-session";
 import { useLogout } from "@/hooks/service-hooks/auth.hook";
@@ -95,22 +95,6 @@ export default function NavigationDrawer() {
 							>
 								<Home className="text-inherit text-3xl" size={30} />
 								<Link href="/">Home</Link>
-							</NavButton>
-							<NavButton
-								pathname="/studio"
-								currentPathname={pathname}
-								onClick={() => setToggleDrawer(false)}
-							>
-								<Flower className="text-inherit text-3xl" size={24} />
-								<Link href="/studio">AI Decoration Studio</Link>
-							</NavButton>
-							<NavButton
-								pathname="/studio"
-								currentPathname={pathname}
-								onClick={() => setToggleDrawer(false)}
-							>
-								<Flower className="text-inherit text-3xl" size={24} />
-								<Link href="/trial">Try Studio now</Link>
 							</NavButton>
 						</>
 					) : (

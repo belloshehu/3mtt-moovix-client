@@ -1,3 +1,4 @@
+import { GenreListResponse } from "@/types/genre.types";
 import { MovieListResponse } from "@/types/movie.types";
 import axios, { AxiosInstance } from "axios";
 
@@ -42,6 +43,37 @@ class MovieServiceAPI {
 		id: string;
 	}) {
 		const { data } = await protectedRequest.get(`/movies/${id}`);
+		return data.data;
+	}
+
+	static async getDiscoverMovies({
+		page = 1,
+		with_genres = "",
+		include_adult = false,
+		include_video = false,
+	}: {
+		page?: number;
+		with_genres?: string;
+		include_adult?: boolean;
+		include_video?: boolean;
+	}) {
+		const { data } = await axios.get<MovieListResponse>(
+			"/api/movies/discover",
+			{
+				params: {
+					page,
+					with_genres,
+					include_adult,
+					include_video,
+				},
+			}
+		);
+		return data.data;
+	}
+
+	// get list of genres
+	static async getMoviesGenres() {
+		const { data } = await axios.get<GenreListResponse>("/api/movies/genres");
 		return data.data;
 	}
 }
