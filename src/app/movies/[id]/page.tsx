@@ -33,9 +33,10 @@ export default function MovieDetailPage() {
 		budget,
 		production_companies,
 		production_countries,
+		adult,
 	} = data;
 	return (
-		<div className="relative flex flex-col md:flex-row items-start justify-start gap-10 w-full p-2 pt-10 md:p-20 text-center h-fit h-min-[50vh]  rounded-md ">
+		<div className="relative flex flex-col md:flex-row items-start justify-start gap-10 w-full p-2 pt-10 md:p-30 text-center h-fit h-min-[50vh]">
 			<Image
 				src={
 					poster_path
@@ -51,6 +52,9 @@ export default function MovieDetailPage() {
 				<h2 className="font-semibold md:text-2xl">
 					{title}({release_date.split("-")[0]})
 				</h2>
+				<span className="p-2 bg-gray-200 rounded-md">
+					{adult ? "18+" : "Parental guide applies"}
+				</span>
 				<section className="flex items-center gap-5">
 					<div className="flex items-center gap-2 bg-black p-2 text-white rounded-md">
 						<ThumbsUp /> <span>{vote_count}</span>
@@ -82,12 +86,26 @@ export default function MovieDetailPage() {
 					<h2 className="font-semibold mb-2">Overview</h2>
 					<p>{overview}</p>
 				</section>
+
+				{/* production companies that produced it */}
 				{production_companies && production_companies.length > 0 && (
 					<section className="text-left">
 						<h2 className="font-semibold mb-2">Produced By</h2>
 						<ol className="list-disc px-5">
 							{production_companies.map((item) => (
 								<li key={item.id}>{item.name}</li>
+							))}
+						</ol>
+					</section>
+				)}
+
+				{/* Production countries where the movie was produced */}
+				{production_countries && production_countries.length > 0 && (
+					<section className="text-left">
+						<h2 className="font-semibold mb-2">Produced In</h2>
+						<ol className="list-disc px-5">
+							{production_countries.map((item) => (
+								<li key={item.iso_3166_1}>{item.name}</li>
 							))}
 						</ol>
 					</section>

@@ -21,7 +21,6 @@ interface MovieGroupProps {
 	filter?: React.ReactNode;
 }
 export default function MovieGroup({
-	groupDescription,
 	groupTitle,
 	data,
 	isLoading,
@@ -35,9 +34,9 @@ export default function MovieGroup({
 				className
 			)}
 		>
-			<div className="flex items-center justify-between w-full mb-2">
+			<div className="flex items-center justify-between w-full mb-2 bg-gray-100 p-2 rounded-xl">
 				<h2
-					className={`font-normal md:text-lg md:font-semibold capitalize border-b-4 border-[#ADF802] mb-2 text-black`}
+					className={`font-normal md:text-lg md:font-semibold capitalize border-b-0 border-[#ADF802] mb-0 text-black`}
 				>
 					{groupTitle} ({data?.results.length || 0})
 				</h2>
