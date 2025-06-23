@@ -99,3 +99,13 @@ Feel free to submit issues or pull requests to improve the project.
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## Home Page
+<img width="1440" alt="Screenshot 2025-06-21 at 23 30 33" src="https://github.com/user-attachments/assets/d698f709-7a9c-4fca-81a8-f237f570d193" />
+
+## Search Page
+
+<img width="1427" alt="Screenshot 2025-06-21 at 23 43 50" src="https://github.com/user-attachments/assets/0712a2e6-0475-4e78-b88d-803818c6f011" />
+
+
+
