@@ -104,6 +104,10 @@ Or using yarn:
 yarn start
 ```
 
+## Backend repository
+
+Here is the url for the backend repository [here](https://github.com/belloshehu/3mtt-moovix-server)
+
 ## Contributing
 
 Feel free to submit issues or pull requests to improve the project.
