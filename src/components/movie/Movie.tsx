@@ -4,6 +4,8 @@ import { MovieType } from "@/types/movie.types";
 import { Vote } from "lucide-react";
 import Image from "next/image";
 import MovieDialog from "./MovieDialog";
+import Link from "next/link";
+import { buttonVariants } from "../ui/button";
 
 interface MovieProps extends MovieType {
 	// Define any props that Movie component might need
@@ -15,6 +17,7 @@ export default function Movie({
 	poster_path,
 	release_date,
 	vote_count,
+	id,
 }: MovieProps) {
 	return (
 		<div
@@ -37,7 +40,9 @@ export default function Movie({
 			<MovieDialog title={title} />
 			{/* Movie details will be displayed here */}
 			<div className="w-full flex flex-col items-start justify-start gap-1 text-left">
-				<h2 className=" ">{title}</h2>
+				<Link href={`movies/${id}`} className="text-sm underline">
+					{title}
+				</Link>
 			</div>
 			<div className="w-full flex  items-center justify-between gap-1">
 				<small className="text-gray-400 text-sm">

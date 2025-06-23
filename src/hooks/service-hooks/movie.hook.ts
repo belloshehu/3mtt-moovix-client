@@ -5,7 +5,13 @@ export const useGetMovies = ({ page }: { page: number }) => {
 	return useQuery({
 		queryFn: () => MovieserviceAPI.getMovies({ page }),
 		queryKey: ["Movies", page],
-		staleTime: 1000 * 60 * 60, // 5 minutes
+	});
+};
+
+export const useGetSingleMovieById = ({ id }: { id: number }) => {
+	return useQuery({
+		queryFn: () => MovieserviceAPI.getMovieById({ id }),
+		queryKey: ["movie", id],
 	});
 };
 
@@ -13,7 +19,6 @@ export const useGetPopularMovies = ({ page }: { page: number }) => {
 	return useQuery({
 		queryFn: () => MovieserviceAPI.getPopularMovies({ page }),
 		queryKey: ["Movies", "popular", page],
-		staleTime: 1000 * 60 * 60, // 5 minutes
 	});
 };
 

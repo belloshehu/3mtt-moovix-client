@@ -1,5 +1,5 @@
 import { GenreListResponse } from "@/types/genre.types";
-import { MovieListResponse } from "@/types/movie.types";
+import { MovieListResponse, MovieDetailResponse } from "@/types/movie.types";
 import axios, { AxiosInstance } from "axios";
 
 class MovieServiceAPI {
@@ -35,14 +35,8 @@ class MovieServiceAPI {
 		return data.data;
 	}
 
-	static async getMovieById({
-		protectedRequest,
-		id,
-	}: {
-		protectedRequest: AxiosInstance;
-		id: string;
-	}) {
-		const { data } = await protectedRequest.get(`/movies/${id}`);
+	static async getMovieById({ id }: { id: number }) {
+		const { data } = await axios.get<MovieDetailResponse>(`/api/movies/${id}`);
 		return data.data;
 	}
 

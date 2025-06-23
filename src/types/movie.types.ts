@@ -1,3 +1,5 @@
+import { Genre } from "./genre.types";
+
 export interface MovieType {
 	adult: boolean; // Defaults to false
 	backdrop_path: string; // Defaults to empty string
@@ -14,7 +16,52 @@ export interface MovieType {
 	vote_average: number; // Defaults to 0
 	vote_count: number; // Defaults to 0
 }
+export interface ProductionCompany {
+	id: number;
+	logo_path: string;
+	name: string;
+	origin_country: string;
+}
 
+export interface MovieDetailType {
+	adult: boolean;
+	backdrop_path: string;
+	belongs_to_collection: boolean;
+	budget: number;
+	genres: Genre[];
+	homepage: string;
+	id: number;
+	imdb_id: number;
+	origin_country: string[];
+	original_language: string;
+	original_title: string;
+	overview: string;
+	popularity: number;
+	poster_path: string;
+	production_companies: ProductionCompany[];
+	production_countries: [
+		{
+			iso_3166_1: string;
+			name: string;
+		}
+	];
+	release_date: string;
+	revenue: number;
+	runtime: number;
+	spoken_languages: [
+		{
+			english_name: string;
+			iso_639_1: string;
+			name: string;
+		}
+	];
+	status: string;
+	tagline: string;
+	title: string;
+	video: boolean;
+	vote_average: number;
+	vote_count: number;
+}
 export interface MovieListType {
 	page: number; // Defaults to 1
 	results: MovieType[]; // Array of Movie objects
@@ -24,6 +71,12 @@ export interface MovieListType {
 
 export interface MovieListResponse {
 	data: MovieListType; // The main data object containing the list of movies
+	message: string; // A message indicating the status of the response
+	error?: string; // An optional error message if something went wrong
+}
+
+export interface MovieDetailResponse {
+	data: MovieDetailType; // The main data object containing a single movie
 	message: string; // A message indicating the status of the response
 	error?: string; // An optional error message if something went wrong
 }
