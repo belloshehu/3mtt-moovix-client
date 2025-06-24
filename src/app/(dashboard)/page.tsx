@@ -33,7 +33,7 @@ export default function Dashboard() {
 					<List />
 					My Watchlist
 				</h2>
-				<ScrollArea className="w-full h-[200px] p-2 rounded-md border-[1px]">
+				<ScrollArea className="w-full h-[200px] p-2 rounded-md border-[1px] bg-black/40">
 					<div>
 						<p className="text-gray-500">No watchlist added yet.</p>
 					</div>

@@ -5,33 +5,6 @@ export const navItems: NavigationItemType[] = [
 	{ path: "#pricing", name: "Pricing" },
 ];
 
-export const adminNavItems: NavigationItemType[] = [
-	{
-		name: "Users",
-		path: "/users",
-		active: true,
-	},
-];
-
-export const userNavItems: NavigationItemType[] = [
-	{
-		name: "Dashboard",
-		path: "/dashboard",
-		active: true,
-	},
-
-	{
-		name: "Messages",
-		path: "#",
-		active: false,
-	},
-	{
-		name: "Notifications",
-		path: "#",
-		active: true,
-	},
-];
-
 export const studioNavItems: NavigationItemType[] = [
 	{
 		name: "Decoration",
@@ -44,5 +17,51 @@ export const studioNavItems: NavigationItemType[] = [
 	{
 		name: "members",
 		path: "/members",
+	},
+];
+
+export const dashboardNavItems: NavigationItemType[] = [
+	{
+		name: "Watchlist",
+		path: "/watchlist",
+		active: true,
+	},
+	{
+		name: "Custom List",
+		path: "/custom-list",
+		active: true,
+	},
+	{
+		name: "Favorites",
+		path: "/favorites",
+		active: true,
+	},
+	{
+		name: "Followers",
+		path: "/followers",
+		active: true,
+	},
+];
+
+export const userNavItems: NavigationItemType[] = [
+	...dashboardNavItems,
+	{
+		name: "Messages",
+		path: "#",
+		active: false,
+	},
+	{
+		name: "Notifications",
+		path: "#",
+		active: true,
+	},
+];
+
+export const adminNavItems: NavigationItemType[] = [
+	...dashboardNavItems,
+	{
+		name: "Users",
+		path: "/users",
+		active: true,
 	},
 ];

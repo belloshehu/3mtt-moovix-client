@@ -26,6 +26,13 @@ const nextConfig: NextConfig = {
 				pathname: "/dzzxgsrbl/image/upload/v1750080930/**",
 				search: "",
 			},
+			{
+				protocol: "https",
+				hostname: "youtube.com",
+				port: "",
+				pathname: "/watch/**",
+				search: "",
+			},
 		],
 	},
 };

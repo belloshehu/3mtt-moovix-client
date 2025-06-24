@@ -1,4 +1,4 @@
-import { MovieDetailResponse, MovieListResponse } from "@/types/movie.types";
+import { MovieVideoListResponse } from "@/types/movie.types";
 
 import { NextRequest, NextResponse } from "next/server";
 import { publicTMDBRequest } from "@/lib/axios";
@@ -18,15 +18,16 @@ export async function GET(
 				{ status: 400 }
 			);
 		}
-		console.log(id);
-		const movie = await publicTMDBRequest.get<MovieDetailResponse>(
-			// /discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc
-			`/movie/${id}?language=en-US&api_key=${api_key}`
+
+		const movie = await publicTMDBRequest.get<MovieVideoListResponse>(
+			`/movie/${id}/videos?language=en-US&api_key=${api_key}`
 		);
+
+		console.log("Movie trailers fetched successfully:", movie.data);
 		return NextResponse.json(
 			{
 				data: movie.data,
-				message: "Movie fetched successfully",
+				message: "Video fetched successfully",
 			},
 			{ status: 200 }
 		);

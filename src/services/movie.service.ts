@@ -1,5 +1,9 @@
 import { GenreListResponse } from "@/types/genre.types";
-import { MovieListResponse, MovieDetailResponse } from "@/types/movie.types";
+import {
+	MovieListResponse,
+	MovieDetailResponse,
+	MovieVideoListResponse,
+} from "@/types/movie.types";
 import axios, { AxiosInstance } from "axios";
 
 class MovieServiceAPI {
@@ -68,6 +72,21 @@ class MovieServiceAPI {
 	// get list of genres
 	static async getMoviesGenres() {
 		const { data } = await axios.get<GenreListResponse>("/api/movies/genres");
+		return data.data;
+	}
+
+	// get movie trailers
+	static async getMovieTrailers({ id }: { id: number }) {
+		const { data } = await axios.get<MovieVideoListResponse>(
+			`/api/movies/${id}/trailers`
+		);
+		return data.data;
+	}
+
+	static async getMovieRecommendations({ id }: { id: number }) {
+		const { data } = await axios.get<MovieVideoListResponse>(
+			`/api/movies/${id}/recommendations`
+		);
 		return data.data;
 	}
 }

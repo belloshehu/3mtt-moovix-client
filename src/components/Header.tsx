@@ -19,7 +19,7 @@ export default function Header() {
 	return (
 		<header
 			className={cn(
-				"flex items-center justify-between p-0 px-5 gap-10 shadow-none md:px-10 fixed left-0 z-50 bg-black text-[#ADF802] w-screen",
+				"flex items-center justify-between p-0 px-5 gap-10 shadow-none md:px-10 fixed left-0 z-50 bg-black/50 text-[#ADF802] w-screen",
 				{ "shadow-none": isMobile }
 			)}
 		>

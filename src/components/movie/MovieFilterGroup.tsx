@@ -3,15 +3,18 @@
 import { useGetMoviesGenres } from "@/hooks/service-hooks/movie.hook";
 import Loader from "../Loader";
 import Genre from "./Genre";
+import { cn } from "@/lib/utils";
 
 interface MovieFilterGroupProps {
 	// Define any props if needed
 	genres?: number[];
 	setGenres?: React.Dispatch<React.SetStateAction<number[]>>;
+	className?: string;
 }
 export default function MovieFilterGroup({
 	genres,
 	setGenres,
+	className,
 }: MovieFilterGroupProps) {
 	const { data, isLoading } = useGetMoviesGenres();
 	if (isLoading) return <Loader message="loading genres" />;
@@ -29,7 +32,12 @@ export default function MovieFilterGroup({
 	};
 
 	return (
-		<div className="flex flex-wrap gap-2 items-center justify-start p-2 rounded-md bg-[#ADF802]/20 w-full">
+		<div
+			className={cn(
+				"flex flex-wrap gap-2 items-center justify-start p-2 rounded-md bg-[#ADF802]/20 w-full",
+				className
+			)}
+		>
 			{data.genres.map((genre) => (
 				<Genre
 					key={genre.id}

@@ -8,7 +8,7 @@ export default function MovieList({ movies }: { movies: any[] }) {
 			<div className="flex  w-max gap-2 overflow-x-auto p-2">
 				{/* Movie cards will go here */}
 				{movies.map((movie) => (
-					<Movie key={movie.id} {...movie} />
+					<Movie key={movie.id} data={movie} />
 				))}
 			</div>
 			<ScrollBar orientation="horizontal" className="h-2" />

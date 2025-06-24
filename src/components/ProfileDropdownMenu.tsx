@@ -26,6 +26,7 @@ export default function ProfileDropdownMenu() {
 	const renderNavItems = useCreateNavbar(
 		session.user.role,
 		(navItems: NavigationItemType[]) => {
+			console.log(navItems);
 			return navItems
 				.filter((item) => item.active)
 				.map((item, index) => {

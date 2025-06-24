@@ -66,3 +66,10 @@ export const useGetMoviesGenres = () => {
 		queryKey: ["genres"],
 	});
 };
+
+export const useGetMovieTrailers = ({ id }: { id: number }) => {
+	return useQuery({
+		queryFn: () => MovieserviceAPI.getMovieTrailers({ id }),
+		queryKey: ["movie", "trailers", id],
+	});
+};

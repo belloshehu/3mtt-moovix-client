@@ -80,3 +80,28 @@ export interface MovieDetailResponse {
 	message: string; // A message indicating the status of the response
 	error?: string; // An optional error message if something went wrong
 }
+
+export interface MovieVideoType {
+	iso_639_1: string;
+	iso_3166_1: string;
+	name: string;
+	key: string;
+	published_at: string;
+	site: "YouTube";
+	size: number;
+	type: string;
+	official: boolean;
+	id: string;
+}
+
+export interface MovieVideoResponse {
+	data: MovieDetailType; // The main data object containing a single movie
+	message: string; // A message indicating the status of the response
+	error?: string; // An optional error message if something went wrong
+}
+
+export interface MovieVideoListResponse {
+	data: { id: string; results: MovieVideoType[] }; // An array of movie video objects
+	message: string; // A message indicating the status of the response
+	error?: string; // An optional error message if something went wrong
+}

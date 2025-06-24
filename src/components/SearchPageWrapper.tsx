@@ -1,12 +1,17 @@
 "use client";
 import MovieGroup from "@/components/movie/MoviesGroup";
 import Searchbar from "@/components/Searchbar";
-import { useSearchMovies } from "@/hooks/service-hooks/movie.hook";
+import {
+	useGetMoviesGenres,
+	useSearchMovies,
+} from "@/hooks/service-hooks/movie.hook";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
+import MovieFilterGroup from "./movie/MovieFilterGroup";
 
 export default function SearchPageWrapper() {
 	const searchTerm = useSearchParams();
+	// const { data: genres, isLoading: loadingGenres } = useGetMoviesGenres();
 	const [sortBy, setSortBy] = useState<
 		"popularity" | "rating" | "release_date"
 	>("release_date");
@@ -30,10 +35,11 @@ export default function SearchPageWrapper() {
 			</header>
 
 			<div className="w-full grid grid-cols-1 md:grid-cols-4 gap-5 p-5 md:px-10">
-				<div className="w-full h-fit md:h-[50vh] bg-white rounded-md p-5 flex flex-col items-start justify-start gap-5 col-span-1 border-[1px]">
+				<div className="w-full h-fit md:h-min-[50vh] rounded-md p-5 flex flex-col items-start justify-start gap-5 col-span-1 border-[1px]">
 					<h2 className="text-lg font-semibold mb-2">Filters</h2>
+					<MovieFilterGroup className="bg-none" />
 					{/* Placeholder for filters, if any */}
-					<form className="flex flex-col w-full items-start justify-start">
+					{/* <form className="flex flex-col w-full items-start justify-start">
 						<label>
 							<input
 								type="radio"
@@ -64,7 +70,7 @@ export default function SearchPageWrapper() {
 							/>
 							Rating
 						</label>
-					</form>
+					</form> */}
 				</div>
 				<MovieGroup
 					data={data}

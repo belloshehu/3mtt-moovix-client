@@ -18,7 +18,7 @@ export default function Genre({
 		<Button
 			onClick={() => handleClick && handleClick(id)}
 			className={cn(
-				"bg-[#ADF802] text-black px-4 py-2 rounded-full hover:bg-[#ADF802]/80 transition-colors",
+				"bg-slate-300/20 border-[1px] border-white text-black px-4 py-2 rounded-full hover:bg-[#ADF802]/80 transition-colors",
 				{
 					"bg-black hover:bg-black/80 text-[#ADF802]": selected,
 				},
