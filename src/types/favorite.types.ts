@@ -1,6 +1,6 @@
 import { MovieType } from "./movie.types";
 
-export interface WatchlistType {
+export interface FavoriteType {
 	_id: string; // Defaults to empty string
 	user: string; // Defaults to empty string
 	movies: MovieType[]; // Array of MovieType
@@ -8,7 +8,7 @@ export interface WatchlistType {
 	updatedAt: string; // Defaults to empty string
 }
 
-export interface AddToWatchlistPayloadType {
+export interface AddToFavoritePayloadType {
 	adult: boolean; // Defaults to false
 	backdrop_path: string; // Defaults to empty string
 	genre_ids?: number[]; // Array of integers
@@ -25,10 +25,10 @@ export interface AddToWatchlistPayloadType {
 	vote_count: number; // Defaults to 0
 }
 
-export type RemoveFromWatchlistPayloadType = MovieType; // MovieType object
+export type RemoveFromFavoritePayloadType = MovieType; // MovieType object
 
-export interface WatchlistResponseType {
-	data: WatchlistType; // The main data object containing the watchlist
+export interface FavoriteResponseType {
+	data: FavoriteType; // The main data object containing the Favorite
 	message: string; // A message indicating the status of the response
 	error?: string; // An optional error message if something went wrong
 }

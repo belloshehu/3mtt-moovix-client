@@ -8,7 +8,7 @@ import {
 	useGetMovieTrailers,
 	useGetSingleMovieById,
 } from "@/hooks/service-hooks/movie.hook";
-import { useAddToWatchlist } from "@/hooks/service-hooks/watchlist.hook";
+import { useAddToWatchlist } from "@/hooks/service-hooks/favorite.hook";
 import { useAxios } from "@/hooks/use-axios";
 import { Banknote, Clock, Heart, List, ThumbsUp, Video } from "lucide-react";
 import Image from "next/image";
