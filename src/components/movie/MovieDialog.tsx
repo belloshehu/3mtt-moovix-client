@@ -15,6 +15,7 @@ import {
 import { useAxios } from "@/hooks/use-axios";
 import Loader from "../Loader";
 import { useCallback } from "react";
+import AddItemToWatchlistForm from "../watchlist/AddItemDialog";
 
 export default function MovieDialog({ movieData }: { movieData: MovieType }) {
 	const { mutateAsync: add, isPending: addPending } = useAddToFavorite();
@@ -59,14 +60,7 @@ export default function MovieDialog({ movieData }: { movieData: MovieType }) {
 					<Loader />
 				) : (
 					<div className="flex flex-col items-start justify-start gap-2">
-						<Button
-							onClick={handleAddToFavorite}
-							disabled={addPending}
-							className="w-full flex items-center justify-between  shadow-sm shadow-gray-300/50"
-						>
-							<span className="text-gray-500">Add to WatchButtonst</span>
-							<List size={20} className="text-[#ADF802]" />
-						</Button>
+						<AddItemToWatchlistForm movieData={movieData} />
 						{!isMovieInFavorite() ? (
 							<Button
 								onClick={handleAddToFavorite}
