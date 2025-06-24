@@ -8,9 +8,9 @@ import {
 	useGetMovieTrailers,
 	useGetSingleMovieById,
 } from "@/hooks/service-hooks/movie.hook";
-import { useAddToWatchlist } from "@/hooks/service-hooks/watchlist.hook";
+import { useAddToFavorite } from "@/hooks/service-hooks/favorite.hook";
 import { useAxios } from "@/hooks/use-axios";
-import { Banknote, Clock, Heart, List, ThumbsUp, Video } from "lucide-react";
+import { Banknote, Clock, Heart, List, ThumbsUp } from "lucide-react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
@@ -20,7 +20,7 @@ export default function MovieDetailPage() {
 	const { data, isLoading } = useGetSingleMovieById({
 		id: parseInt(id as string),
 	});
-	const { isPending, mutateAsync } = useAddToWatchlist();
+	const { isPending, mutateAsync } = useAddToFavorite();
 	const { data: trailersData, isLoading: loadingTrailers } =
 		useGetMovieTrailers({
 			id: parseInt(id as string),
@@ -46,11 +46,11 @@ export default function MovieDetailPage() {
 		adult,
 	} = data;
 
-	const handleAddToWatchlist = async () => {
+	const handleAddToFavorite = async () => {
 		try {
 			await mutateAsync({ payload: data, protectedRequest });
 		} catch (error) {
-			console.error("Failed to add movie to watchlist:", error);
+			console.error("Failed to add movie to Favorite:", error);
 		}
 	};
 	return (
@@ -68,11 +68,6 @@ export default function MovieDetailPage() {
 						alt={title}
 						className="w-full md:w-fit h-[300px] md:h-[400px] object-cover rounded-md"
 					/>
-					{/* <Button>
-						<Video className="mr-2" />
-						Watch Trailer
-					</Button> */}
-					{/* watch trailer button */}
 				</div>
 				<div className="flex flex-col items-start justify-start gap-5 w-full">
 					<h2 className="font-semibold md:text-2xl">
@@ -93,7 +88,7 @@ export default function MovieDetailPage() {
 						</div>
 					</section>
 					<section className="flex gap-2 items-center flex-wrap justify-start">
-						<Button onClick={handleAddToWatchlist} disabled={isPending}>
+						<Button onClick={handleAddToFavorite} disabled={isPending}>
 							<Heart />
 						</Button>
 						<Button>

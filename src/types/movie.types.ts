@@ -1,6 +1,7 @@
 import { Genre } from "./genre.types";
 
 export interface MovieType {
+	_id?: string; // Optional, defaults to empty string
 	adult: boolean; // Defaults to false
 	backdrop_path: string; // Defaults to empty string
 	genre_ids: number[]; // Array of integers

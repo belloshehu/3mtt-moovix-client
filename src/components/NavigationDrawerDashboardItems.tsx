@@ -55,7 +55,7 @@ export default function NavigationDrawerDashboardItems({
 	useEffect(() => {}, [user.role]);
 
 	const pathname = usePathname();
-	if (pathname === "/login" || pathname === "/signup") return null;
+	if (pathname === "/auth/login" || pathname === "/auth/signup") return null;
 
 	return (
 		<div>

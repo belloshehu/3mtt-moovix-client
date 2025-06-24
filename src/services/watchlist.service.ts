@@ -1,58 +1,112 @@
+import { MovieType } from "@/types/movie.types";
 import {
-	AddToWatchlistPayloadType,
-	WatchlistResponseType,
+	CreateWatchlistPayload,
+	CreateWatchlistResponse,
+	DeleteWatchlistResponse,
+	GetWatchlistResponse,
+	UpdateWatchlistResponse,
+	WatchlistAllResponse,
 } from "@/types/watchlist.types";
 import { AxiosInstance } from "axios";
 
 class WatchlistServiceAPI {
-	static addToWatchlist = async ({
+	static async createWatchlist({
 		protectedRequest,
 		payload,
 	}: {
 		protectedRequest: AxiosInstance;
-		payload: AddToWatchlistPayloadType;
-	}) => {
-		const { data } = await protectedRequest.post<WatchlistResponseType>(
-			"/watchlists/add",
+		payload: CreateWatchlistPayload;
+	}) {
+		const { data } = await protectedRequest.post<CreateWatchlistResponse>(
+			"/watchlists",
 			payload
 		);
 		return data.data;
-	};
+	}
 
-	static getWatchlist = async ({
+	static async getWatchlist({
+		protectedRequest,
+		watchlistId,
+	}: {
+		protectedRequest: AxiosInstance;
+		watchlistId: string;
+	}) {
+		const { data } = await protectedRequest.get<GetWatchlistResponse>(
+			`/watchlists/${watchlistId}`
+		);
+		return data.data;
+	}
+
+	static async getAllWatchlists({
 		protectedRequest,
 	}: {
 		protectedRequest: AxiosInstance;
-	}) => {
-		const { data } = await protectedRequest.get<WatchlistResponseType>(
+	}) {
+		const { data } = await protectedRequest.get<WatchlistAllResponse>(
 			"/watchlists"
 		);
 		return data.data;
-	};
+	}
 
-	static removeFromWatchlist = async ({
+	static async updateWatchlist({
 		protectedRequest,
-		movieId,
+		watchlistId,
+		payload,
 	}: {
 		protectedRequest: AxiosInstance;
-		movieId: number;
-	}) => {
-		const { data } = await protectedRequest.delete<WatchlistResponseType>(
-			`/watchlists/remove/${movieId}`
+		watchlistId: string;
+		payload: CreateWatchlistPayload;
+	}) {
+		const { data } = await protectedRequest.put<UpdateWatchlistResponse>(
+			`/watchlists/${watchlistId}`,
+			payload
 		);
 		return data.data;
-	};
+	}
 
-	static clearWatchlist = async ({
+	static async deleteWatchlist({
 		protectedRequest,
+		watchlistId,
 	}: {
 		protectedRequest: AxiosInstance;
-	}) => {
-		const { data } = await protectedRequest.delete<WatchlistResponseType>(
-			"/watchlists/clear"
+		watchlistId: string;
+	}) {
+		const { data } = await protectedRequest.delete<DeleteWatchlistResponse>(
+			`/watchlists/${watchlistId}`
 		);
 		return data.data;
-	};
+	}
+
+	static async addItemToWatchlist({
+		protectedRequest,
+		watchlistId,
+		item,
+	}: {
+		protectedRequest: AxiosInstance;
+		watchlistId: string;
+		item: MovieType;
+	}) {
+		const { data } = await protectedRequest.post<CreateWatchlistResponse>(
+			`/watchlists/${watchlistId}/add`,
+			item
+		);
+		return data.data;
+	}
+
+	static async removeItemFromWatchlist({
+		protectedRequest,
+		watchlistId,
+		itemId,
+	}: {
+		protectedRequest: AxiosInstance;
+		watchlistId: string;
+		itemId: number;
+	}) {
+		const { data } = await protectedRequest.delete<DeleteWatchlistResponse>(
+			`/watchlists/${watchlistId}/remove/${itemId}`
+		);
+		return data.data;
+	}
 }
 
 export default WatchlistServiceAPI;

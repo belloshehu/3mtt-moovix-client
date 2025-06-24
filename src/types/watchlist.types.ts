@@ -1,34 +1,33 @@
 import { MovieType } from "./movie.types";
+import { ResponseType } from "./response.types";
+import { UserType } from "./user.types";
 
 export interface WatchlistType {
-	_id: string; // Defaults to empty string
-	user: string; // Defaults to empty string
-	movies: MovieType[]; // Array of MovieType
-	createdAt: string; // Defaults to empty string
-	updatedAt: string; // Defaults to empty string
+	_id: string;
+	name: string;
+	description?: string;
+	type: "movie" | "tv";
+	items?: MovieType[]; // Array of movie or TV show IDs
+	createdAt: string;
+	updatedAt: string;
+	user: UserType;
+	isPublic: boolean;
+	image?: string; // Optional image URL for the watchlist
 }
 
-export interface AddToWatchlistPayloadType {
-	adult: boolean; // Defaults to false
-	backdrop_path: string; // Defaults to empty string
-	genre_ids?: number[]; // Array of integers
-	id: number; // Defaults to 0
-	original_language: string; // Defaults to empty string
-	original_title: string; // Defaults to empty string
-	overview: string; // Defaults to empty string
-	popularity: number; // Defaults to 0
-	poster_path: string; // Defaults to empty string
-	release_date: string; // Defaults to empty string
-	title: string; // Defaults to empty string
-	video: boolean; // Defaults to true
-	vote_average: number; // Defaults to 0
-	vote_count: number; // Defaults to 0
+export interface WatchlistAllResponse extends ResponseType<WatchlistType[]> {
+	data: WatchlistType[];
+}
+export interface CreateWatchlistPayload {
+	name: string;
+	description?: string;
+	type?: "movie" | "tv";
 }
 
-export type RemoveFromWatchlistPayloadType = MovieType; // MovieType object
-
-export interface WatchlistResponseType {
-	data: WatchlistType; // The main data object containing the watchlist
-	message: string; // A message indicating the status of the response
-	error?: string; // An optional error message if something went wrong
+export interface CreateWatchlistResponse extends ResponseType<WatchlistType> {
+	data: WatchlistType;
 }
+
+export type GetWatchlistResponse = CreateWatchlistResponse;
+export type UpdateWatchlistResponse = CreateWatchlistResponse;
+export type DeleteWatchlistResponse = CreateWatchlistResponse;

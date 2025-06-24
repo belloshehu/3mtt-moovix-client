@@ -9,11 +9,18 @@ import { usePathname } from "next/navigation";
 import { navItems } from "@/constants/navigation";
 import useSession from "@/lib/session/use-session";
 import ProfileDropdownMenu from "./ProfileDropdownMenu";
+import { useGetFavorite } from "@/hooks/service-hooks/favorite.hook";
+import { Heart, ListMusic } from "lucide-react";
+import { Badge } from "./ui/badge";
+import { useGetAllWatchlists } from "@/hooks/service-hooks/watchlist.types";
 
 export default function Header() {
 	const isMobile = useIsMobile();
 	const pathname = usePathname();
 	const { session } = useSession();
+	const { data, isLoading } = useGetFavorite();
+	const { data: watchlists, isLoading: loadingWatchlist } =
+		useGetAllWatchlists();
 
 	if (pathname === "/auth/login" || pathname === "/auth/signup") return null;
 	return (
@@ -45,6 +52,23 @@ export default function Header() {
 					);
 				})}
 			</nav>
+
+			{!isLoading && data && data.movies && data.movies.length > 0 && (
+				<div className="relative flex items-center justify-center gap-2">
+					<Heart />
+					<Badge className="absolute top-[-4] left-[80%] bg-white text-black">
+						{data.movies.length || 0}
+					</Badge>
+				</div>
+			)}
+			{!loadingWatchlist && watchlists && watchlists.length > 0 && (
+				<div className="relative flex items-center justify-center gap-2">
+					<ListMusic />
+					<Badge className="absolute top-[-4] left-[80%] bg-white text-black">
+						{watchlists?.length || 0}
+					</Badge>
+				</div>
+			)}
 
 			{!isMobile &&
 				(session?.isLoggedIn ? (

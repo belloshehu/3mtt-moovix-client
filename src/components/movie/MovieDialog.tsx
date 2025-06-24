@@ -8,39 +8,40 @@ import {
 import { Button } from "../ui/button";
 import { MovieType } from "@/types/movie.types";
 import {
-	useAddToWatchlist,
-	useGetWatchlist,
-	useRemoveFromWatchlist,
-} from "@/hooks/service-hooks/watchlist.hook";
+	useAddToFavorite,
+	useGetFavorite,
+	useRemoveFromFavorite,
+} from "@/hooks/service-hooks/favorite.hook";
 import { useAxios } from "@/hooks/use-axios";
 import Loader from "../Loader";
 import { useCallback } from "react";
+import AddItemToWatchlistForm from "../watchlist/AddItemDialog";
 
 export default function MovieDialog({ movieData }: { movieData: MovieType }) {
-	const { mutateAsync: add, isPending: addPending } = useAddToWatchlist();
+	const { mutateAsync: add, isPending: addPending } = useAddToFavorite();
 	const { mutateAsync: remove, isPending: removedPending } =
-		useRemoveFromWatchlist();
-	const { data: watchlist, isLoading } = useGetWatchlist();
+		useRemoveFromFavorite();
+	const { data: Favorite, isLoading } = useGetFavorite();
 	const { protectedRequest } = useAxios();
 
-	const handleAddToWatchlist = async () => {
+	const handleAddToFavorite = async () => {
 		await add({
 			payload: movieData,
 			protectedRequest,
 		});
 	};
 
-	const handleRemoveFromWatchlist = async () => {
+	const handleRemoveFromFavorite = async () => {
 		await remove({
 			movieId: movieData.id,
 			protectedRequest,
 		});
 	};
 
-	const isMovieInWatchlist = useCallback(() => {
-		if (!watchlist || !watchlist.movies) return false;
-		return watchlist.movies.some((movie) => movie.id === movieData.id);
-	}, [watchlist, movieData.id]);
+	const isMovieInFavorite = useCallback(() => {
+		if (!Favorite || !Favorite.movies) return false;
+		return Favorite.movies.some((movie) => movie.id === movieData.id);
+	}, [Favorite, movieData.id]);
 
 	return (
 		<Dialog>
@@ -59,17 +60,10 @@ export default function MovieDialog({ movieData }: { movieData: MovieType }) {
 					<Loader />
 				) : (
 					<div className="flex flex-col items-start justify-start gap-2">
-						<Button
-							onClick={handleAddToWatchlist}
-							disabled={addPending}
-							className="w-full flex items-center justify-between  shadow-sm shadow-gray-300/50"
-						>
-							<span className="text-gray-500">Add to WatchButtonst</span>
-							<List size={20} className="text-[#ADF802]" />
-						</Button>
-						{!isMovieInWatchlist() ? (
+						<AddItemToWatchlistForm movieData={movieData} />
+						{!isMovieInFavorite() ? (
 							<Button
-								onClick={handleAddToWatchlist}
+								onClick={handleAddToFavorite}
 								disabled={addPending}
 								className="w-full flex items-center justify-between  shadow-sm shadow-gray-300/50"
 							>
@@ -78,7 +72,7 @@ export default function MovieDialog({ movieData }: { movieData: MovieType }) {
 							</Button>
 						) : (
 							<Button
-								onClick={handleRemoveFromWatchlist}
+								onClick={handleRemoveFromFavorite}
 								disabled={removedPending}
 								className="w-full flex items-center justify-between  shadow-sm shadow-gray-300/50"
 							>
@@ -86,14 +80,6 @@ export default function MovieDialog({ movieData }: { movieData: MovieType }) {
 								<HeartOff size={20} className="text-[#ADF802]" />
 							</Button>
 						)}
-						<Button className="w-full flex items-center justify-between  shadow-sm shadow-gray-300/50">
-							<span className="text-gray-500">Your rating</span>
-							<Star size={20} className="text-[#ADF802]" />
-						</Button>
-						<Button className="w-full flex items-center justify-between shadow-sm shadow-gray-300/50">
-							<span className="text-gray-500">Add to Custom list</span>
-							<List size={20} className="text-[#ADF802]" />
-						</Button>
 					</div>
 				)}
 			</DialogContent>

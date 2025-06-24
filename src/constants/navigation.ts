@@ -22,23 +22,23 @@ export const studioNavItems: NavigationItemType[] = [
 
 export const dashboardNavItems: NavigationItemType[] = [
 	{
-		name: "Watchlist",
-		path: "/watchlist",
-		active: true,
-	},
-	{
-		name: "Custom List",
-		path: "/custom-list",
+		name: "Watchlists",
+		path: "/dashboard/watchlists",
 		active: true,
 	},
 	{
 		name: "Favorites",
-		path: "/favorites",
+		path: "/dashboard/favorites",
 		active: true,
 	},
 	{
 		name: "Followers",
-		path: "/followers",
+		path: "/dashboard/followers",
+		active: true,
+	},
+	{
+		name: "Profile",
+		path: "/dashboard/profile",
 		active: true,
 	},
 ];
